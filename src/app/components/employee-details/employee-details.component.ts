@@ -69,7 +69,7 @@ save() {
 
    },
    error => {
-       this.confirmDialog( ` שגיאה בשמירת הנתונים ` + error);
+       this.confirmDialog( ` שגיאה בשמירת הנתונים ` + JSON.stringify(error));
    },
    () => {
        // No errors

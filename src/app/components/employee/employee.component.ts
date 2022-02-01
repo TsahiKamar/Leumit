@@ -48,52 +48,52 @@ export class EmployeeComponent implements OnInit {
      this.router.navigate(['/employeeDetails'], { queryParams: { id: row.id, fullName:row.fullName ,phone: row.phone,email: row.email,salary: row.salary}});
   }
 
-  openDialog(action,obj) {
-    if (obj) obj.action = action;
+  // openDialog(action,obj) {
+  //   if (obj) obj.action = action;
     
-    const dialogRef = this.dialog.open(DialogComponent, {
-      width: '250px',
-      data:obj,
-      autoFocus: false
-    });
+  //   const dialogRef = this.dialog.open(DialogComponent, {
+  //     width: '250px',
+  //     data:obj,
+  //     autoFocus: false
+  //   });
   
-    dialogRef.afterClosed().subscribe(result => {
+  //   dialogRef.afterClosed().subscribe(result => {
       
-      if(result.event == 'Update')
-      {
-        this.updateRowData(result.data);
-        this.table.renderRows();
-      }
-    });
-  }
+  //     if(result.event == 'Update')
+  //     {
+  //       this.updateRowData(result.data);
+  //       this.table.renderRows();
+  //     }
+  //   });
+  // }
   
  
   
-  updateRowData(row_obj){
-    var employee = this.employees.find(x=> x.id === row_obj.id );
-    if (employee)
-    {
+  // updateRowData(row_obj){
+  //   var employee = this.employees.find(x=> x.id === row_obj.id );
+  //   if (employee)
+  //   {
       
-      employee.fullName = row_obj.fullName;
-      employee.phone = row_obj.phone;
-      employee.email = row_obj.email;
-      employee.salary = row_obj.salary;
+  //     employee.fullName = row_obj.fullName;
+  //     employee.phone = row_obj.phone;
+  //     employee.email = row_obj.email;
+  //     employee.salary = row_obj.salary;
       
-      this.custService.updateEmployeeDetails(employee).subscribe(result => {
-        console.log("updateEmployeeDetails result : " + result );
-      },
-      error => {
-          alert("updateEmployeeDetails error : " + error);
-      },
-      () => {
-          // No errors
-      }
-      );
+  //     this.custService.updateEmployeeDetails(employee).subscribe(result => {
+  //       console.log("updateEmployeeDetails result : " + result );
+  //     },
+  //     error => {
+  //         alert("updateEmployeeDetails error : " + error);
+  //     },
+  //     () => {
+  //         // No errors
+  //     }
+  //     );
 
-      this.table.renderRows();
-   }
+  //     this.table.renderRows();
+  //  }
 
-  }
+  // }
   
   public GetControlValue(form: FormGroup, field: string){
     let el = document.querySelector('input[name="'+field+'"]');
